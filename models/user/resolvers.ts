@@ -22,20 +22,45 @@ const resolversUser = {
       return user;
     },
 
-    },
+  },
   Mutation: {
     // Se debe llamar igual al items de la mutation en los type.ts
     createUser: async (parent, args) => {
+      console.log("arg: ", args)
       const userCreated = await UserModel.create({
-        name: args.name,
-        lastname: args.lastname,
+        nameUser: args.nameUser,
+        lastName: args.lastName,
         identification: args.identification,
         email: args.email,
-        rol: args.rol,
+        movil: args.movil,
+        phone: args.phone,
+        nationality: args.nationality,
+        birthDay: args.birthDay,
+        cityBirth: args.cityBirth,
+        emergencyContact: args.emergencyContact,
+        issuance: args.issuance,
+        address: args.address,
+        locality: args.locality,
+        strata: args.strata,
+        AFP: args.AFP,
+        ARL: args.ARL,
+        EPS: args.EPS,
+        RH: args.RH,
+        UPZ: args.UPZ,
+        role: args.role,
+        statusUser: args.statusUser,
+        nameGuardian: args.nameGuardian,
+        lastNameGuardian: args.lastNameGuardian,
+        identificationGuardian: args.identificationGuardian,
+        phoneGuardian: args.phoneGuardian,
+        emailGuardian: args.emailGuardian,
+        addressGuardian: args.addressGuardian,
+
+
       });
-      if (Object.keys(args).includes("status")) {
-        userCreated.status = args.status;
-      }
+      // if (Object.keys(args).includes("status")) {
+      //   userCreated.statusUser = args.status;
+      // }
       return userCreated;
     },
 
@@ -43,12 +68,33 @@ const resolversUser = {
       const userEdited = await UserModel.findByIdAndUpdate(
         args._id,
         {
-          name: args.name,
-          lastname: args.lastname,
+          nameUser: args.nameUser,
+          lastName: args.lastName,
           identification: args.identification,
           email: args.email,
-          status: args.status,
-          rol: args.rol,
+          movil: args.movil,
+          phone: args.phone,
+          nationality: args.nationality,
+          birthDay: args.birthDay,
+          cityBirth: args.cityBirth,
+          emergencyContact: args.emergencyContact,
+          issuance: args.issuance,
+          address: args.address,
+          locality: args.locality,
+          strata: args.strata,
+          AFP: args.AFP,
+          ARL: args.ARL,
+          EPS: args.EPS,
+          RH: args.RH,
+          UPZ: args.UPZ,
+          role: args.role,
+          statusUser: args.statusUser,
+          nameGuardian: args.nameGuardian,
+          lastNameGuardian: args.lastNameGuardian,
+          identificationGuardian: args.identificationGuardian,
+          phoneGuardian: args.phoneGuardian,
+          emailGuardian: args.emailGuardian,
+          addressGuardian: args.addressGuardian,
         },
         { new: true }
       );
@@ -56,15 +102,8 @@ const resolversUser = {
     },
 
     deleteUser: async (parent, args) => {
-      if (Object.keys(args).includes("email")) {
-        const userDeleted = await UserModel.findOneAndDelete({
-          email: args.email,
-        });
+      const userDeleted = await UserModel.findOneAndDelete({ _id: args._id });
         return userDeleted;
-      } else if (Object.keys(args).includes("_id")) {
-        const userDeleted = await UserModel.findOneAndDelete({ _id: args._id });
-        return userDeleted;
-      }
     },
   },
 };
