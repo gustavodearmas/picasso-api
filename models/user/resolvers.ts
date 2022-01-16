@@ -1,11 +1,13 @@
+import { Enum_Rol, Enum_StatusUsers } from "../enum/enum";
 import { UserModel } from "./user";
 
 const resolversUser = {
   Query: {
     Users: async (parent, args, context) => {
       // Consulta todos los usuarios de la base de datos
-
       const users = await UserModel.find();
+      let arrayFilter = users.filter(e => e.statusUser == Enum_StatusUsers.ACTIVO || e.statusUser == Enum_StatusUsers.INACTIVO)
+      console.log("arrayFilter: ", arrayFilter)
       return users;
 
       /////////////////// AGRAGAR ESTE CODIGO PARA VALIDARCION DE ROLES DESDE EL BACK  /////////////
@@ -36,17 +38,18 @@ const resolversUser = {
         phone: args.phone,
         nationality: args.nationality,
         birthDay: args.birthDay,
+        photo: args.photo,
         cityBirth: args.cityBirth,
         emergencyContact: args.emergencyContact,
         issuance: args.issuance,
         address: args.address,
         locality: args.locality,
         strata: args.strata,
-        AFP: args.AFP,
-        ARL: args.ARL,
-        EPS: args.EPS,
-        RH: args.RH,
-        UPZ: args.UPZ,
+        afp: args.afp,
+        arl: args.arl,
+        eps: args.eps,
+        rh: args.rh,
+        upz: args.upz,
         role: args.role,
         statusUser: args.statusUser,
         nameGuardian: args.nameGuardian,
@@ -77,16 +80,17 @@ const resolversUser = {
           nationality: args.nationality,
           birthDay: args.birthDay,
           cityBirth: args.cityBirth,
+          photo: args.photo,
           emergencyContact: args.emergencyContact,
           issuance: args.issuance,
           address: args.address,
           locality: args.locality,
           strata: args.strata,
-          AFP: args.AFP,
-          ARL: args.ARL,
-          EPS: args.EPS,
-          RH: args.RH,
-          UPZ: args.UPZ,
+          afp: args.afp,
+          arl: args.arl,
+          eps: args.eps,
+          rh: args.rh,
+          upz: args.upz,
           role: args.role,
           statusUser: args.statusUser,
           nameGuardian: args.nameGuardian,

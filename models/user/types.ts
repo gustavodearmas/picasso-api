@@ -13,16 +13,17 @@ type User {
   nationality: String
   birthDay: Date!
   cityBirth: String
+  photo: String
   emergencyContact: String
   issuance: Enum_Issuance
   address: String
   locality: Enum_Locality
   strata: Float
-  AFP: Enum_AFP
-  ARL: Enum_ARL
-  EPS: Enum_EPS
-  RH: Enum_RH
-  UPZ: String
+  afp: Enum_AFP
+  arl: Enum_ARL
+  eps: Enum_EPS
+  rh: Enum_RH
+  upz: String
   role: Enum_Rol
   statusUser: Enum_StatusUsers
   nameGuardian: String
@@ -50,16 +51,17 @@ type Mutation {
       nationality: String
       birthDay: Date!
       cityBirth: String
+      photo: String
       emergencyContact: String
       issuance: Enum_Issuance
       address: String
       locality: Enum_Locality
       strata: Float
-      AFP: Enum_AFP
-      ARL: Enum_ARL
-      EPS: Enum_EPS
-      RH: Enum_RH
-      UPZ: String
+      afp: Enum_AFP
+      arl: Enum_ARL
+      eps: Enum_EPS
+      rh: Enum_RH
+      upz: String
       role: Enum_Rol
       statusUser: Enum_StatusUsers
       nameGuardian: String
@@ -81,16 +83,17 @@ type Mutation {
       nationality: String
       birthDay: Date
       cityBirth: String
+      photo: String
       emergencyContact: String
       issuance: Enum_Issuance
       address: String
       locality: Enum_Locality
       strata: Float
-      AFP: Enum_AFP
-      ARL: Enum_ARL
-      EPS: Enum_EPS
-      RH: Enum_RH
-      UPZ: String
+      afp: Enum_AFP
+      arl: Enum_ARL
+      eps: Enum_EPS
+      rh: Enum_RH
+      upz: String
       role: Enum_Rol
       statusUser: Enum_StatusUsers
       nameGuardian: String

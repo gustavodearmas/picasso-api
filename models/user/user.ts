@@ -11,17 +11,18 @@ interface User {
   phone: string;
   nationality: string;
   birthDay: Date;
+  photo: string;
   cityBirth: string;
   emergencyContact: string;
   issuance: Enum_Issuance;
   address: string;
   locality: Enum_Locality;
   strata: number;
-  AFP: Enum_AFP;
-  ARL: Enum_ARL;
-  EPS: Enum_EPS;
-  RH: Enum_RH;
-  UPZ: string;
+  afp: Enum_AFP;
+  arl: Enum_ARL;
+  eps: Enum_EPS;
+  rh: Enum_RH;
+  upz: string;
   role: Enum_Rol
   statusUser: Enum_StatusUsers;
   nameGuardian: string;
@@ -73,6 +74,9 @@ const UserSchema = new Schema<User>({
     type: Date,
     required: true,
   },
+  photo: {
+    type: String,
+  },
   cityBirth: {
     type: String,
   },
@@ -92,29 +96,28 @@ const UserSchema = new Schema<User>({
   strata: {
     type: Number,
   },
-  AFP: {
+  afp: {
     type: String,
     enum: Enum_AFP
   },
-  ARL: {
+  arl: {
     type: String,
     enum: Enum_ARL,
   },
-  EPS: {
+  eps: {
     type: String,
     enum: Enum_EPS,
   },
-  RH: {
+  rh: {
     type: String,
     enum: Enum_RH,
   },
-  UPZ: {
+  upz: {
     type: String,
   },
   role: {
     type: String,
     enum: Enum_Rol,
-    default: Enum_Rol.PENDIENTE,
   },
   statusUser: {
     type: String,

@@ -9,9 +9,9 @@ const typesEnums = gql`
   }
 
   enum Enum_StatusUsers {
-    PENDIENTE
     ACTIVO
     INACTIVO
+    OCULTO
   }
 
   enum Enum_AFP {
