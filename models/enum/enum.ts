@@ -57,6 +57,7 @@ enum Enum_RH {
   O_POSITIVO='O_POSITIVO',
   O_NEGATIVO ='O_NEGATIVO',
 }
+
 enum Enum_Issuance {
   MADRE='MADRE',
   PADRE='PADRE',

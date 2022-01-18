@@ -1,4 +1,4 @@
-import { Enum_Rol, Enum_StatusUsers } from "../enum/enum";
+import { Enum_StatusUsers } from "../enum/enum";
 import { UserModel } from "./user";
 
 const resolversUser = {
@@ -6,9 +6,13 @@ const resolversUser = {
     Users: async (parent, args, context) => {
       // Consulta todos los usuarios de la base de datos
       const users = await UserModel.find();
-      let arrayFilter = users.filter(e => e.statusUser == Enum_StatusUsers.ACTIVO || e.statusUser == Enum_StatusUsers.INACTIVO)
-      console.log("arrayFilter: ", arrayFilter)
-      return users;
+      let arrayFilter = users.filter(
+        (e) =>
+          e.statusUser == Enum_StatusUsers.ACTIVO ||
+          e.statusUser == Enum_StatusUsers.INACTIVO
+      );
+      //console.log("arrayFilter: ", arrayFilter);
+      return arrayFilter;
 
       /////////////////// AGRAGAR ESTE CODIGO PARA VALIDARCION DE ROLES DESDE EL BACK  /////////////
       // if(context.userData.rol === 'ADMINISTRADOR'){
@@ -17,18 +21,16 @@ const resolversUser = {
       // }else{
       //   return null;
       // }
-
     },
     User: async (parent, args) => {
       const user = await UserModel.findOne({ _id: args._id });
       return user;
     },
-
   },
   Mutation: {
     // Se debe llamar igual al items de la mutation en los type.ts
     createUser: async (parent, args) => {
-      console.log("arg: ", args)
+      //console.log("arg: ", args);
       const userCreated = await UserModel.create({
         nameUser: args.nameUser,
         lastName: args.lastName,
@@ -58,8 +60,6 @@ const resolversUser = {
         phoneGuardian: args.phoneGuardian,
         emailGuardian: args.emailGuardian,
         addressGuardian: args.addressGuardian,
-
-
       });
       // if (Object.keys(args).includes("status")) {
       //   userCreated.statusUser = args.status;
@@ -105,9 +105,15 @@ const resolversUser = {
       return userEdited;
     },
 
-    deleteUser: async (parent, args) => {
-      const userDeleted = await UserModel.findOneAndDelete({ _id: args._id });
-        return userDeleted;
+    disableUser: async (parent, args) => {
+      const userDisabled = await UserModel.findByIdAndUpdate(
+        args._id,
+        {
+          statusUser: Enum_StatusUsers.OCULTO,
+        },
+        { new: true }
+      );
+      return userDisabled;
     },
   },
 };

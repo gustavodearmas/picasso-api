@@ -135,10 +135,14 @@ const UserSchema = new Schema<User>({
   phoneGuardian: {
     type: String,
   },
+  emailGuardian: {
+    type: String,
+  },
   addressGuardian: {
     type: String,
   },
 });
+
 
 const UserModel = model("User", UserSchema);
 
