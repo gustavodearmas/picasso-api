@@ -71,6 +71,7 @@ const typesUser = gql`
       emailGuardian: String
       addressGuardian: String
     ): User
+    
 
     editUser(
       _id: String!

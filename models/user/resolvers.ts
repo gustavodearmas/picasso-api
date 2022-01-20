@@ -30,7 +30,6 @@ const resolversUser = {
   Mutation: {
     // Se debe llamar igual al items de la mutation en los type.ts
     createUser: async (parent, args) => {
-      //console.log("arg: ", args);
       const userCreated = await UserModel.create({
         nameUser: args.nameUser,
         lastName: args.lastName,
