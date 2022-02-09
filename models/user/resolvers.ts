@@ -11,6 +11,7 @@ const resolversUser = {
           e.statusUser == Enum_StatusUsers.ACTIVO ||
           e.statusUser == Enum_StatusUsers.INACTIVO
       );
+      console.log("arrayFilter: ", arrayFilter);
       //console.log("arrayFilter: ", arrayFilter);
       return arrayFilter;
 
@@ -26,6 +27,14 @@ const resolversUser = {
       const user = await UserModel.findOne({ _id: args._id });
       return user;
     },
+
+  
+    UsersById: async (parent, args) => {
+      const arr = args['_id'];
+      const list = await UserModel.find({ '_id': { $in: arr } });
+      return list
+    },
+    
   },
   Mutation: {
     // Se debe llamar igual al items de la mutation en los type.ts

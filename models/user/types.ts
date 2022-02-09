@@ -38,6 +38,7 @@ const typesUser = gql`
     #Estas constantes deben conincidir con los nombres en los query de los resolver
     Users: [User]
     User(_id: String!): User
+    UsersById(_id: [String]!): [User]
   }
 
   type Mutation {
