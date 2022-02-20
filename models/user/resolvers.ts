@@ -11,8 +11,6 @@ const resolversUser = {
           e.statusUser == Enum_StatusUsers.ACTIVO ||
           e.statusUser == Enum_StatusUsers.INACTIVO
       );
-      console.log("arrayFilter: ", arrayFilter);
-      //console.log("arrayFilter: ", arrayFilter);
       return arrayFilter;
 
       /////////////////// AGRAGAR ESTE CODIGO PARA VALIDARCION DE ROLES DESDE EL BACK  /////////////
