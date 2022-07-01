@@ -6,10 +6,11 @@ const resolversUser = {
     Users: async (parent, args, context) => {
       // Consulta todos los usuarios de la base de datos
       const users = await UserModel.find();
+      //console.log("users: ", users)
       let arrayFilter = users.filter(
         (e) =>
           e.statusUser == Enum_StatusUsers.ACTIVO ||
-          e.statusUser == Enum_StatusUsers.INACTIVO
+          e.statusUser == Enum_StatusUsers.INACTIVO 
       );
       return arrayFilter;
 
@@ -23,6 +24,7 @@ const resolversUser = {
     },
     User: async (parent, args) => {
       const user = await UserModel.findOne({ _id: args._id });
+      //console.log("user: ", user)
       return user;
     },
 
